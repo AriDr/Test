@@ -1,0 +1,16 @@
+const clock = document.getElementById("clock");
+
+function updateClock() {
+  const date = new Date();
+  const timezoneOffset = -date.getTimezoneOffset() / 60;
+  const timezone = timezoneOffset > 0 ? `+${timezoneOffset}` : timezoneOffset;
+  const time = date.toLocaleTimeString("en-US", {
+    hour12: false,
+    hour: "numeric",
+    minute: "2-digit",
+    timeZone: `UTC${timezone}`
+  });
+  clock.innerHTML = time;
+}
+
+setInterval(updateClock, 1000);
